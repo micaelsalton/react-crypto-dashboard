@@ -1,6 +1,6 @@
+import React from "react"
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import {Routes, Route} from "react-router-dom"
 
 function App() {
   const [item, setItem] = useState([])
@@ -17,11 +17,21 @@ function App() {
     </div>
   ))
 
-  return (
-    <div className="App">
+  function Teste(){
+    return (
+      <div>
       <input value={input} onChange={(e)=> setInput(e.target.value)} placeholder="digite aqui" />
       <button onClick={saveItem}>adicionar</button>
       {itemMap}
+      </div>
+    )
+  }
+
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Teste />} />
+      </Routes>
     </div>
   )
 }
