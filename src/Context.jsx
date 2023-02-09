@@ -18,19 +18,33 @@ function ContextProvider({children}){
       )
 
       setCryptoData(result.data.data)
-      console.log(cryptoData)
     }
 
     fetchData()
   }, [selectedCrypto])
 
   //end of crypto section----/////////
+  //start of hero section----/////////
+
+  const [image, setImage] = useState(null)
+  const [imgTheme, setImgTheme] = useState("nature")
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      const response = await axios.get(`https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=${imgTheme}`)
+      setImage(response.data.urls.regular)
+    };
+  
+    fetchImage()
+  }, [imgTheme])
 
 
     return (
         <Context.Provider 
         value={{setSelectedCrypto, 
                 selectedCrypto,
+                image,
+                setImgTheme,
                 cryptoData}}>
             {children}
         </Context.Provider>

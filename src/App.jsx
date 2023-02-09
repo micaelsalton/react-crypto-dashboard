@@ -1,7 +1,8 @@
 import React from "react"
 import { useState } from 'react'
 import {Routes, Route} from "react-router-dom"
-import Crypto from "./components/Crypto"
+import Hero from "./pages/Hero"
+
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Crypto />} />
+        <Route path="/" element={<Hero />} />
       </Routes>
     </div>
   )
