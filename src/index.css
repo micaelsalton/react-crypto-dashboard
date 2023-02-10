@@ -80,6 +80,11 @@ body {
   padding: 10px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -113,4 +118,81 @@ body {
   font-size: 16px;
   cursor: pointer;
   font-family: inherit;
+}
+
+/* todo section */
+.todo-list {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.todo-list h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+.todo-list span {
+  cursor: pointer;
+  font-size: 1.3em;
+  font-family: inherit;
+}
+
+.todo-form,
+.todo-update-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.todo-form input[type="text"],
+.todo-update-form input[type="text"] {
+  width: 60%;
+  padding: 0.5em;
+  font-size: 1em;
+  border: none;
+  border-bottom: 2px solid gray;
+  margin-right: 1em;
+}
+
+.todo-form button,
+.todo-update-form button {
+  padding: 0.5em 1em;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 20px;
+}
+
+.todo-list li i {
+  display: none;
+  position: absolute;
+  margin-right: 50px;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.todo-list li:hover i {
+  display: block;
 }
