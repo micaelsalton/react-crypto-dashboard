@@ -125,6 +125,8 @@ body {
   width: 50%;
   margin: 0 auto;
   text-align: center;
+  padding: 5px;
+ 
 }
 
 .todo-list h1 {
@@ -180,6 +182,8 @@ body {
   align-items: center;
   position: relative;
   padding-right: 20px;
+  background-color: rgba(63, 81, 181, 0.5);
+  border-radius: 5px;
 }
 
 .todo-list li i {
