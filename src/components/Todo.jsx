@@ -46,17 +46,17 @@ const TodoList = () => {
     <div className="todo-list">
     <h1>Todo List</h1>
     <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          {selectedTodo !== todo.id ? (
+      {todos.map(({id, task, completed}) => (
+        <li key={id}>
+          {selectedTodo !== id ? (
             <>
               <input
                 type="checkbox"
-                checked={todo.completed}
-                onChange={() => completeTodo(todo.id)}
+                checked={completed}
+                onChange={() => completeTodo(id)}
               />
-              <span onClick={() => setSelectedTodo(todo.id)}>{todo.task}</span>
-              <i className="fa fa-close" onClick={() => deleteTodo(todo.id)}></i>
+              <span onClick={() => setSelectedTodo(id)}>{task}</span>
+              <i className="fa fa-close" onClick={() => deleteTodo(id)}></i>
             </>
           ) : (
             <div className="todo-update-form">

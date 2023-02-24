@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context";
 
-
-
 function Crypto(){
 
     const {setSelectedCrypto, selectedCrypto, cryptoData} = useContext(Context)
@@ -10,6 +8,9 @@ function Crypto(){
     function getIcon(){
         return selectedCrypto === "bitcoin" ? "fab fa-btc" : "	fab fa-ethereum"
     }
+
+    let price = Number(cryptoData.priceUsd).toFixed(2)
+    
 
     return (
         <div className="crypto-container">
@@ -29,7 +30,7 @@ function Crypto(){
             <span className="data-label">Symbol:</span> {cryptoData.symbol}
           </li>
           <li className="data-item">
-            <span className="data-label">Price:</span> {cryptoData.priceUsd} USD
+            <span className="data-label">Price:</span> {price} USD
           </li>
         </ul>
       </div>
