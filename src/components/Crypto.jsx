@@ -9,7 +9,7 @@ function Crypto(){
         return selectedCrypto === "bitcoin" ? "fab fa-btc" : "	fab fa-ethereum"
     }
 
-    let price = Number(cryptoData.priceUsd).toFixed(2)
+    const price = Number(cryptoData.priceUsd).toFixed(2)
     
 
     return (
