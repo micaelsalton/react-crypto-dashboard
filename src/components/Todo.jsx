@@ -55,7 +55,7 @@ const TodoList = () => {
                 checked={completed}
                 onChange={() => completeTodo(id)}
               />
-              <span onClick={() => setSelectedTodo(id)}>{task}</span>
+              <span className={completed ? "complete" : ""} onClick={() => setSelectedTodo(id)}>{task}</span>
               <i className="fa fa-close" onClick={() => deleteTodo(id)}></i>
             </>
           ) : (

@@ -16,6 +16,7 @@
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 .crypto-container {
@@ -28,6 +29,7 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   padding: 20px;
   color: white;
+  max-height: 30vh;
 }
 
 .title {
@@ -63,10 +65,16 @@ body {
 .data-item {
   font-size: 18px;
   margin-bottom: 8px;
+  margin: 0 auto;
 }
 
 .data-label {
   font-weight: bold;
+}
+
+.animated {
+  font-size: 60px;
+  margin-top: 30px;
 }
 
 /*Hero section
@@ -90,6 +98,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  margin-bottom: 10px;
 }
 
 .header h1 {
@@ -154,6 +163,10 @@ body {
   font-family: inherit;
 }
 
+.todo-list span::first-letter {
+  text-transform: uppercase;
+}
+
 .todo-form,
 .todo-update-form {
   display: flex;
@@ -190,17 +203,22 @@ body {
   border-radius: 5px;
 }
 
+.complete {
+  text-decoration: line-through;
+}
+
 .todo-list li i {
   display: none;
-  position: absolute;
-  margin-right: 50px;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 1.2em;
   cursor: pointer;
 }
 
 .todo-list li:hover i {
   display: block;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.todo-list li i:hover {
+  opacity: 0.6;
 }

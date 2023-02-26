@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../Context";
 
 function Crypto(){
 
-    const {setSelectedCrypto, selectedCrypto, cryptoData} = useContext(Context)
+    const {setSelectedCrypto, selectedCrypto, cryptoData, loading} = useContext(Context)
+
 
     function getIcon(){
         return selectedCrypto === "bitcoin" ? "fab fa-btc" : "	fab fa-ethereum"
@@ -14,6 +16,9 @@ function Crypto(){
 
     return (
         <div className="crypto-container">
+          {loading ? <><i class="fa fa-spinner fa-spin animated"></i><h3>carregando...</h3></>
+          : 
+      <>
         <h1 className="title">
           {cryptoData.name} <i className={`${getIcon()}`}></i>
         </h1>
@@ -27,12 +32,11 @@ function Crypto(){
         </select>
         <ul className="data-list">
           <li className="data-item">
-            <span className="data-label">Symbol:</span> {cryptoData.symbol}
-          </li>
-          <li className="data-item">
-            <span className="data-label">Price:</span> {price} USD
+            <span className="data-label">Preço:</span> {price} USD
           </li>
         </ul>
+        </>
+        }  
       </div>
       )
 }

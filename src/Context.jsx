@@ -9,9 +9,10 @@ function ContextProvider({children}){
 //Crypto section ------------///////
   const [cryptoData, setCryptoData] = useState([])
   const [selectedCrypto, setSelectedCrypto] = useState('bitcoin')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-   
+    setLoading(true)
     const fetchData = async () => {
       const result = await axios(
         `https://api.coincap.io/v2/assets/${selectedCrypto}`
@@ -19,8 +20,10 @@ function ContextProvider({children}){
 
       setCryptoData(result.data.data)
     }
-
     fetchData()
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
   }, [selectedCrypto])
 
   //end of crypto section----/////////
@@ -46,6 +49,7 @@ function ContextProvider({children}){
         <Context.Provider 
         value={{setSelectedCrypto, 
                 selectedCrypto,
+                loading,
                 image,
                 setImgTheme,
                 cryptoData}}>
