@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../Context";
 
@@ -16,7 +15,7 @@ function Crypto(){
 
     return (
         <div className="crypto-container">
-          {loading ? <><i class="fa fa-spinner fa-spin animated"></i><h3>carregando...</h3></>
+          {loading ? <><i className="fa fa-spinner fa-spin animated"></i><h3>carregando...</h3></>
           : 
       <>
         <h1 className="title">
@@ -24,7 +23,7 @@ function Crypto(){
         </h1>
         <select
           value={selectedCrypto}
-          onChange={e => setSelectedCrypto(e.target.value)}
+          onChange={(e) => setSelectedCrypto(e.target.value)}
           className="select"
         >
           <option value="bitcoin">Bitcoin</option>

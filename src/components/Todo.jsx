@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { nanoid } from 'nanoid'
 
 const TodoList = () => {
@@ -11,8 +11,23 @@ const TodoList = () => {
   const [updateTask, setUpdateTask] = useState("")
   const [selectedTodo, setSelectedTodo] = useState(null)
 
+  const todoUpdateFormRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutsideForm = (e) => {
+      if (todoUpdateFormRef.current && !todoUpdateFormRef.current.contains(e.target)) {
+        setSelectedTodo(null)
+        setUpdateTask("")
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutsideForm)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideForm)
+    }
+  }, [todoUpdateFormRef])
+
   const addTodo = () => {
-    if (newTask && !todos.find((todo) => todo.task === newTask)) {
+    if (newTask && !todos.find((todo) => todo.task.toLowerCase() === newTask.toLowerCase())) {
       setTodos([...todos, { id: nanoid() , task: newTask, completed: false }])
       setNewTask("")
     }
@@ -33,8 +48,8 @@ const TodoList = () => {
           todo.id === selectedTodo ? { ...todo, task: updateTask } : todo
         )
       )
-      setSelectedTodo(null)
       setUpdateTask("")
+      setSelectedTodo(null)
     }
   }
 
@@ -42,6 +57,7 @@ const TodoList = () => {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+ 
   return (
     <div className="todo-list">
     <h1>Todo List</h1>
@@ -55,11 +71,13 @@ const TodoList = () => {
                 checked={completed}
                 onChange={() => completeTodo(id)}
               />
-              <span className={completed ? "complete" : ""} onClick={() => setSelectedTodo(id)}>{task}</span>
+              <span className={completed ? "complete" : ""} 
+                               onClick={() => setSelectedTodo(id)}>{task}
+              </span>
               <i className="fa fa-close" onClick={() => deleteTodo(id)}></i>
             </>
           ) : (
-            <div className="todo-update-form">
+            <div className="todo-update-form" ref={todoUpdateFormRef}>
               <input
                 type="text"
                 placeholder="Update task"
